@@ -1,14 +1,13 @@
----
-title: "Reproducible Research-PA1"
-author: "Thomax Young"
-date: "Wednesday, March 11, 2015"
-output: html_document
----
+
+#Reproducible Research-PA1
+##author: Thomax Young
+##date: Wednesday, March 11, 2015
+
 
 ##Loading and preprocessing the data
 
 ###1.Load the data 
-Make sure that you put activity.csv and PA1_template.Rmd in the same directory.
+Make sure that activity.csv and PA1_template.Rmd in the same directory.
 Read in the data and take a look at it.
 
 ```{r}
@@ -127,12 +126,15 @@ week<-weekdays(as.Date(act_data$date),abbreviate = TRUE)
 week[week=="ÖÜÈÕ" | week=="ÖÜÁù"]<-"weekend"
 week[week!="weekend"]<-"weekday"
 week<-as.factor(week)
+
+##Here is something not reproducible that ,in system using Chinese charictars, R ##automaticly use Chinese as weekday lable. 
 ```
 
 
 ###2.Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
 ```{r}
+#Make sure the lattice package has been installed
 library(lattice)
 act_data_NAfilled<-cbind(act_data_NAfilled,week)
 
